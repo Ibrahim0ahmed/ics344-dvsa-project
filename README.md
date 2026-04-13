@@ -93,7 +93,7 @@ For each topic:
 - Omar Alyamani
 - Rayan Alharbi
 - 
-- Ibrahim
+- Ibrahim Albahrani
 
 ---
 

@@ -1,0 +1,57 @@
+{
+    "_comment": "FIX: Lesson #7 — Over-Privileged Function (DVSA-SEND-RECEIPT-EMAIL)",
+    "_description": "Replace broad wildcard S3/DynamoDB/SES permissions with least-privilege policy. Replace <ACCOUNT_ID>, <RECEIPTS_BUCKET>, and <TABLE_NAME> with your actual values.",
+    "_where": "IAM Console → Roles → serverlessrepo-OWASP-DVSA-SendReceiptFunctionRole-xxx → Replace inline policies",
+
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowCloudWatchLogs",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:us-east-1:<ACCOUNT_ID>:log-group:/aws/lambda/DVSA-SEND-RECEIPT-EMAIL:*"
+        },
+        {
+            "Sid": "AllowS3ReceiptsBucketOnly",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::<RECEIPTS_BUCKET>/*"
+        },
+        {
+            "Sid": "AllowDynamoDBOrdersTableOnly",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:Query"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:us-east-1:<ACCOUNT_ID>:table/DVSA-ORDERS-DB",
+                "arn:aws:dynamodb:us-east-1:<ACCOUNT_ID>:table/DVSA-ORDERS-DB/index/*"
+            ]
+        },
+        {
+            "Sid": "AllowSESSendOnly",
+            "Effect": "Allow",
+            "Action": [
+                "ses:SendEmail",
+                "ses:SendRawEmail"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowSTSIdentity",
+            "Effect": "Allow",
+            "Action": [
+                "sts:GetCallerIdentity"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

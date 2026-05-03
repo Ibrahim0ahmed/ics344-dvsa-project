@@ -90,10 +90,10 @@ For each topic:
 ---
 
 ## Team Members
-- Omar Alyamani
-- Rayan Alharbi
-- Abdurahman Ahmed
-- Ibrahim Albahrani
+- Omar Alyamani (Lessons 1 & 9)
+- Rayan Alharbi (Lessons 2 & 6)
+- Abdurahman Ahmed (Lessons 3, 7 & 10) 
+- Ibrahim Albahrani (Lessons 4, 5 & 8)
 
 ---
 
